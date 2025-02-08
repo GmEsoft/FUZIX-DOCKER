@@ -9,8 +9,8 @@ build [Fuzix](https://github.com/EtchedPixels/Fuzix) for some supported
 Z80-based platforms, and maye others.
 
 
-I. Install WSL 2
-----------------
+I. Install WSL 2 _(Windows users)_
+----------------------------------
 
 - `wsl --install`
 - Reboot the system.
@@ -18,8 +18,8 @@ I. Install WSL 2
 See https://learn.microsoft.com/en-us/windows/wsl/install .
 
 
-II. Install Docker
-------------------
+II. Install Docker _(Windows users)_
+------------------------------------
 
 - Download [Docker Desktop for Windows - x86_64](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-win-amd64)
 - Install the downloaded package.
@@ -32,8 +32,8 @@ II. Install Docker
 https://docs.docker.com/desktop/setup/install/windows-install/
 
 
-III. Convert the tree to Linux
-------------------------------
+III. Convert the tree to Linux _(Windows users)_
+------------------------------------------------
 
 If running Docker for Windows, change the end-of-line of all files to LF ($0A).
 
@@ -81,8 +81,8 @@ command: `export-fuzix`. They can be re-imported using `import-fuzix` or
 TRS-80.
 
 
-VII. Test Fuzix for TRS-80 Model 4/4p
--------------------------------------
+VII. Test Fuzix for TRS-80 Model 4/4p _(Windows users)_
+-------------------------------------------------------
 
 The new Fuzix disk images can be tested using a TRS-80 emulator, for example 
 [TRS80gp](http://48k.ca/trs80gp.html) by [George Phillips](http://48k.ca).
