@@ -1,0 +1,4 @@
+#!/bin/sh
+cd
+rm -rf Fuzix-Compiler-Kit
+git clone https://github.com/EtchedPixels/Fuzix-Compiler-Kit.git

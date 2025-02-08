@@ -1,0 +1,8 @@
+#!/bin/sh
+cd ~
+if [ $? -ne 0 ] ; then exit 1 ; fi
+mkdir -p /mount/FUZIX
+if [ $? -ne 0 ] ; then exit 1 ; fi
+rsync -r -au --info=progress2 --exclude=.git /mount/FUZIX .
+if [ $? -ne 0 ] ; then exit 1 ; fi
+echo Successful.

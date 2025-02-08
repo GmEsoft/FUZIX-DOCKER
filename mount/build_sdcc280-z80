@@ -1,0 +1,36 @@
+#!/bin/bash
+banner Sdcc280z80
+cd ~/sdcc280/sdcc
+if [ $? -ne 0 ] ; then echo cd SDCC280 failed ; exit 1 ; fi
+./configure \
+  --enable-gbz80-port \
+  --enable-z80-port \
+  --disable-mos6502-port \
+  --disable-mos65c02-port \
+  --disable-mcs51-port \
+  --enable-z180-port \
+  --disable-r2k-port \
+  --disable-r2ka-port \
+  --disable-r3ka-port \
+  --disable-tlcs90-port \
+  --enable-ez80_z80-port \
+  --enable-z80n-port \
+  --disable-ds390-port \
+  --disable-ds400-port \
+  --disable-pic14-port \
+  --disable-pic16-port \
+  --disable-hc08-port \
+  --disable-s08-port \
+  --disable-stm8-port \
+  --disable-pdk13-port \
+  --disable-pdk14-port \
+  --disable-pdk15-port \
+  --disable-ucsim \
+  --disable-doc \
+  --enable-device-lib
+if [ $? -ne 0 ] ; then echo configure SDCC280 Z80 failed ; exit 1 ; fi
+time make all install
+if [ $? -ne 0 ] ; then echo make SDCC280 Z80 failed ; exit 1 ; fi
+sdcc -v
+if [ $? -ne 0 ] ; then echo exec SDCC280 Z80 failed ; exit 1 ; fi
+banner Sdcc280z80 Successful

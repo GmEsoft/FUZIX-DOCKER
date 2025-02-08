@@ -1,0 +1,7 @@
+#!/bin/bash
+cd ~/Fuzix-Bintools
+banner BinTools
+if [ $? -ne 0 ] ; then echo banner BinTools failed ; exit 1 ; fi
+make all install
+if [ $? -ne 0 ] ; then echo make BINTOOLS failed ; exit 1 ; fi
+banner BinTools Successful

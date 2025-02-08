@@ -1,0 +1,13 @@
+#!/bin/bash
+banner FuzixTRS80
+cd ~/FUZIX
+if [ $? -ne 0 ] ; then exit 1 ; fi
+export PATH=/opt/fcc/bin:$PATH
+time make TARGET=trs80 all diskimage
+if [ $? -ne 0 ] ; then echo make FUZIX TRS-80 failed! ; exit 1 ; fi
+mkdir -p /mount/FUZIX
+if [ $? -ne 0 ] ; then exit 1 ; fi
+rsync -r -au --info=progress2 Images /mount/FUZIX
+if [ $? -ne 0 ] ; then exit 1 ; fi
+echo Successful.
+banner FuzixTRS80 Successful

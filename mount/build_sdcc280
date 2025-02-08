@@ -1,0 +1,12 @@
+#!/bin/bash
+banner Sdcc280
+cd ~/sdcc280/sdcc
+if [ $? -ne 0 ] ; then echo cd SDCC280 failed ; exit 1 ; fi
+./configure 
+#--disable-pic14-port --disable-pic16-port
+if [ $? -ne 0 ] ; then echo configure SDCC280 failed ; exit 1 ; fi
+time make all install
+if [ $? -ne 0 ] ; then echo make SDCC280 failed ; exit 1 ; fi
+sdcc -v
+if [ $? -ne 0 ] ; then echo exec SDCC280 failed ; exit 1 ; fi
+banner Sdcc280 Successful

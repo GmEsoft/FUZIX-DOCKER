@@ -1,0 +1,6 @@
+#!/bin/sh
+/mount/import_fuzix
+if [ $? -ne 0 ] ; then exit 1 ; fi
+/mount/build_fuzix-trs80
+if [ $? -ne 0 ] ; then exit 1 ; fi
+echo Successful.
