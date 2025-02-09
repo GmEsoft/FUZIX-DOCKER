@@ -4,9 +4,9 @@ FUZIX_DOCKER
 **_Docker image to build FUZIX for Z80-based platforms_**
 
 
-This repo contains a Docker image based on Ubuntu that will be used to
+This repo contains a Docker image based on Ubuntu that can be used to
 build [Fuzix](https://github.com/EtchedPixels/Fuzix) for some supported 
-Z80-based platforms, and maye others.
+Z80-based platforms, and maybe others.
 
 
 I. Install WSL 2 _(Windows users)_
