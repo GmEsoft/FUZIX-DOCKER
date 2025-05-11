@@ -1,5 +1,5 @@
 # Download base image ubuntu 24.04
-FROM ubuntu:24.10
+FROM ubuntu:latest
 
 RUN apt-get update && \
     apt-get install -y git make cmake perl unzip g++ dos2unix curl time rsync nano sysvbanner \

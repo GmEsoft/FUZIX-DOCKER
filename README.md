@@ -43,6 +43,7 @@ If running Docker for Windows, change the end-of-line of all files to LF ($0A).
 IV. Build the Docker image
 --------------------------
 
+- Start Docker Desktop _(Windows users)_;
 - Run the script `build.sh`.
 
 
@@ -51,7 +52,7 @@ V. Run a container on that image
 
 - Run the script `run.sh`. If the container exists, it will be created and started, 
   else it will simply be restarted. If the container needs to be re-created, then
-  delete the container and restart the script `run.sh`. The container can be delete
+  delete the container and restart the script `run.sh`. The container can be deleted
   with `docker -rm $(docker ps -q -l -a -f name=^ubuntu-fuzix.work$)` or using
   Docker Desktop.
 
@@ -60,9 +61,9 @@ VI. Build Fuzix for TRS-80 Model 4/4p
 -------------------------------------
 
 This is an example of a successful build of Fuzix. The scripts can be accomodated for
-other platforms.
+other platforms. The build is successful as of May 11, 2025.
 
-- Run the script `clone_and_build_fuzix_trs80`. This will execute the following scripts:
+- Run the script `/mount/clone_and_build_fuzix_trs80`. This will execute the following scripts:
   - `clone_sdcc280`: get the 'sdcc' compiler specially adapted to build Fuzix;
   - `build_sdcc280-z80`: build sdcc for the Z80 target CPU;
   - `clone_fuzix-bintools`: get the Fuzix build binary tools (assemblers);

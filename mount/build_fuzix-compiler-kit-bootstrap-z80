@@ -2,8 +2,10 @@
 banner CmpBootZ80
 cd ~/Fuzix-Compiler-Kit
 if [ $? -ne 0 ] ; then exit 1 ; fi
+sed -i 's/ -lbsd/ #-lbsd/g' Preprocessor/Makefile
+if [ $? -ne 0 ] ; then exit 1 ; fi
 export PATH=/opt/fcc/bin:$PATH
-make CPP cc cc0 \
+make Preprocessor cc cc0 \
      cc1.z80 cc1.byte \
      cc2 cc2.z80 \
      copt
@@ -16,7 +18,7 @@ CCROOT=/opt/fcc
 	cp cc $CCROOT/bin/fcc && \
 	cp cc.hlp $CCROOT/lib/cc.hlp && \
 	cp cc0 $CCROOT/lib && \
-	cp CPP/cpp $CCROOT/lib && \
+	cp Preprocessor/cpp $CCROOT/lib && \
 	mkdir -p $CCROOT/lib/z80/ && \
 	mkdir -p $CCROOT/lib/z80/include && \
 	cp lorderz80 $CCROOT/bin/lorderz80 && \
