@@ -121,8 +121,11 @@ Dependencies
 - [EtchedPixels/Fuzix-Bintools](https://github.com/EtchedPixels/Fuzix-Bintools.git)
 - [EtchedPixels/Fuzix-Compiler-Kit](https://github.com/EtchedPixels/Fuzix-Compiler-Kit.git)
 
-Unfortunately all these repositories have been archived by their owner _Alan Cox_. I don't
-know if anyone else has forked these projects and is actively maintaining them...
+~Unfortunately all these repositories have been archived by their owner _Alan Cox_. I don't
+know if anyone else has forked these projects and is actively maintaining them...~
+
+The Fuzix repository has been moved from GitHub to Codeberg, with its dependencies.
+The last version on Codeberg doesn't depend on `sdcc280` anymore.
 
 
 Credits
