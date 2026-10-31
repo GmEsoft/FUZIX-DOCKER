@@ -5,7 +5,7 @@ FUZIX_DOCKER
 
 
 This repo contains a Docker image based on Ubuntu that can be used to
-build [Fuzix](https://github.com/EtchedPixels/Fuzix) for some supported 
+build [Fuzix](https://Codeberg.org/EtchedPixels/Fuzix) for some supported 
 Z80-based platforms, and maybe others.
 
 
@@ -50,7 +50,7 @@ IV. Build the Docker image
 V. Run a container on that image
 --------------------------------
 
-- Run the script `run.sh`. If the container doesn't exist, it will be created and started, 
+- Run the script `run.sh` or `run.bat`. If the container doesn't exist, it will be created and started, 
   else it will simply be restarted. If the container needs to be re-created, then
   delete the container and restart the script `run.sh`. The container can be deleted
   with `docker -rm $(docker ps -q -l -a -f name=^ubuntu-fuzix.work$)` or using
@@ -61,12 +61,10 @@ VI. Build Fuzix for TRS-80 Model 4/4p
 -------------------------------------
 
 This is an example of a successful build of Fuzix. The scripts can be accomodated for
-other platforms. The build is successful as of May 11, 2025. (used Docker image 
-ubuntu:24.04 'noble')
+other platforms. The build is successful as of Oct 31, 2026. (used Docker image 
+ubuntu:26.04 'resolute')
 
 - Run the script `/mount/clone_and_build_fuzix_trs80`. This will execute the following scripts:
-  - `clone_sdcc280`: get the 'sdcc' compiler specially adapted to build Fuzix;
-  - `build_sdcc280-z80`: build sdcc for the Z80 target CPU;
   - `clone_fuzix-bintools`: get the Fuzix build binary tools (assemblers);
   - `build_fuzix-bintools`: build them;
   - `clone_fuzix-compiler-kit`: get the Fuzix compiler kit;
@@ -82,6 +80,21 @@ command: `export-fuzix`. They can be re-imported using `import-fuzix` or
 `import_and_build_fuzix-trs80` which will also do an incremental build of Fuzix for the
 TRS-80.
 
+`sdcc280` is not a required dependency to build this project for the TRS-80. This makes
+the build much faster.
+
+This version of Fuzix is now able to boot natively from Hard Disk on the TRS-80 Model 4p.
+However, it is not recognized by the FreHD boot rom as such. For FreHD, the VHD header 
+needs some modification:
+
+```
+00000000 | 00 01  02 03  04 05  06 07  08 09  0A 0B  0C 0D  0E 0F
+---------+--------------------------------------------------------
+00000000 | 56 CB  10 94  01 04  06 07  01 00  42 02  05 15  73 00
+                                       ^^        ^^
+                                    bootable  CP/M-type
+```
+
 
 VII. Test Fuzix for TRS-80 Model 4/4p _(Windows users)_
 -------------------------------------------------------
@@ -91,7 +104,7 @@ The new Fuzix disk images can be tested using a TRS-80 emulator, for example
 Start the emulator by running the Windows batch file `test_fuzix_trs80_trs80gp.bat`.
 
 When the system is started:
-- at the prompt `bootdev:`, reply `0`;
+- at the prompt `bootdev:`, reply `2` (_Changed_ - was previously `0`);
 - at the prompt `Enter new date:`, type `<Enter>`;
 - at the prompt `Enter new date:`, type `<Enter>`;
 - at the prompt `login:`, reply `root`;
@@ -104,24 +117,23 @@ When the system is started:
 Dependencies
 ------------
 
-- [EtchedPixels/FUZIX](https://github.com/EtchedPixels/FUZIX.git)
-- [EtchedPixels/sdcc280](https://github.com/EtchedPixels/sdcc280.git)
-- [EtchedPixels/Fuzix-Bintools](https://github.com/EtchedPixels/Fuzix-Bintools.git)
-- [EtchedPixels/Fuzix-Compiler-Kit](https://github.com/EtchedPixels/Fuzix-Compiler-Kit.git)
+- [EtchedPixels/FUZIX](https://Codeberg.org/EtchedPixels/FUZIX.git)
+- [EtchedPixels/Fuzix-Bintools](https://Codeberg.org/EtchedPixels/Fuzix-Bintools.git)
+- [EtchedPixels/Fuzix-Compiler-Kit](https://Codeberg.org/EtchedPixels/Fuzix-Compiler-Kit.git)
 
-Unfortunately all these repositories have been archived by their owner _Alan Cox_. I don't
-know if anyone else has forked these projects and is actively maintaining them...
+These repositories have been moved from GitHub to Codeberg. `sdcc280` is now unneeded to
+build Fuzix for the TRS-80.
 
 
 Credits
 -------
 
 [_Alan Cox_](https://en.wikipedia.org/wiki/Alan_Cox_(computer_programmer)) 
-[(EtchedPixels)](https://github.com/EtchedPixels) for that great project 
-[Fuzix](https://github.com/EtchedPixels/Fuzix), 'Because Small Is Beautiful'.
+[(EtchedPixels)](https://Codeberg.org/EtchedPixels) for that great project 
+[Fuzix](https://Codeberg.org/EtchedPixels/Fuzix), 'Because Small Is Beautiful'.
 
 [_George Phillips_](http://48k.ca) for [TRS80gp](http://48k.ca/trs80gp.html) 
-probably the best TRS-80 emulator in the world.
+'probably the best TRS-80 emulator in the world'.
 
 
 
@@ -131,7 +143,7 @@ GPLv3 License
 Created by Michel Bernard (michel_bernard@icloud.com) -
 <http://www.github.com/GmEsoft/FUZIX-DOCKER>
 
-Copyright (c) 2025 Michel Bernard. All rights reserved.
+Copyright (c) 2026 Michel Bernard. All rights reserved.
 
 This file is part of FUZIX-DOCKER.
 

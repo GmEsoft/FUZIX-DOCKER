@@ -1,7 +1,5 @@
 #!/bin/bash
 build() {
-/mount/clone_sdcc280 && \
-/mount/build_sdcc280-z80 && \
 /mount/clone_fuzix-bintools && \
 /mount/build_fuzix-bintools && \
 /mount/clone_fuzix-compiler-kit && \

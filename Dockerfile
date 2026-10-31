@@ -1,5 +1,5 @@
-# Download base image ubuntu 24.04 'noble'
-FROM ubuntu:24.04
+# Download base image ubuntu 26.04 'resolute'
+FROM ubuntu:26.04
 
 RUN apt-get update && \
     apt-get install -y git make cmake perl unzip g++ dos2unix curl time rsync nano sysvbanner \
