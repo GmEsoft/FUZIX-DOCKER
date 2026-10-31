@@ -50,7 +50,7 @@ IV. Build the Docker image
 V. Run a container on that image
 --------------------------------
 
-- Run the script `run.sh`. If the container exists, it will be created and started, 
+- Run the script `run.sh`. If the container doesn't exist, it will be created and started, 
   else it will simply be restarted. If the container needs to be re-created, then
   delete the container and restart the script `run.sh`. The container can be deleted
   with `docker -rm $(docker ps -q -l -a -f name=^ubuntu-fuzix.work$)` or using
@@ -61,7 +61,8 @@ VI. Build Fuzix for TRS-80 Model 4/4p
 -------------------------------------
 
 This is an example of a successful build of Fuzix. The scripts can be accomodated for
-other platforms. The build is successful as of May 11, 2025.
+other platforms. The build is successful as of May 11, 2025. (used Docker image 
+ubuntu:24.04 'noble')
 
 - Run the script `/mount/clone_and_build_fuzix_trs80`. This will execute the following scripts:
   - `clone_sdcc280`: get the 'sdcc' compiler specially adapted to build Fuzix;
@@ -81,6 +82,13 @@ command: `export-fuzix`. They can be re-imported using `import-fuzix` or
 `import_and_build_fuzix-trs80` which will also do an incremental build of Fuzix for the
 TRS-80.
 
+### Note: 
+I created a new Docker image based on the latest version of Ubuntu (ubuntu:26.04 'resolute'). 
+I ran the build script on this new image. It failed at compiling sdcc280, because of a mistake
+in `sdcc/sdas/linksrc/aslink.h` at line 1312: the declaration of `extern VOID elf()`
+should read `extern VOID elf(int i)`. I fixed that error in the worktree and it compiled
+fine. The other scripts ran successfully. This build is successful as of Oct 31, 2026.
+
 
 VII. Test Fuzix for TRS-80 Model 4/4p _(Windows users)_
 -------------------------------------------------------
@@ -98,6 +106,23 @@ When the system is started:
 - there are some games in `/usr/games` such as `adv01`, `startrek`;
 - end your session with `shutdown`;
 - when `Halted.` is displayed, the machine can be powered off.
+
+
+Dependencies
+------------
+
+- [EtchedPixels/FUZIX](https://github.com/EtchedPixels/FUZIX.git)
+- [EtchedPixels/sdcc280](https://github.com/EtchedPixels/sdcc280.git)
+  - A small fix is needed in `~/sdcc280/sdcc/sdas/linksrc/aslink.h` line 1312:
+    ```c
+    /* EEP: lkelf.c */
+    extern  VOID            elf(int i); // was VOID elf();
+    ```
+- [EtchedPixels/Fuzix-Bintools](https://github.com/EtchedPixels/Fuzix-Bintools.git)
+- [EtchedPixels/Fuzix-Compiler-Kit](https://github.com/EtchedPixels/Fuzix-Compiler-Kit.git)
+
+Unfortunately all these repositories have been archived by their owner _Alan Cox_. I don't
+know if anyone else has forked these projects and is actively maintaining them...
 
 
 Credits
