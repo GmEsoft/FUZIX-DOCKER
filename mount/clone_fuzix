@@ -1,4 +1,4 @@
 #!/bin/sh
 cd
 rm -rf FUZIX
-git clone https://github.com/EtchedPixels/FUZIX.git
+git clone https://Codeberg.org/EtchedPixels/FUZIX.git

@@ -1,4 +1,4 @@
 #!/bin/sh
 cd
 rm -rf Fuzix-Bintools
-git clone https://github.com/EtchedPixels/Fuzix-Bintools.git
+git clone https://Codeberg.org/EtchedPixels/Fuzix-Bintools.git
