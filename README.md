@@ -50,7 +50,7 @@ IV. Build the Docker image
 V. Run a container on that image
 --------------------------------
 
-- Run the script `run.sh`. If the container exists, it will be created and started, 
+- Run the script `run.sh`. If the container doesn't exist, it will be created and started, 
   else it will simply be restarted. If the container needs to be re-created, then
   delete the container and restart the script `run.sh`. The container can be deleted
   with `docker -rm $(docker ps -q -l -a -f name=^ubuntu-fuzix.work$)` or using
@@ -61,7 +61,8 @@ VI. Build Fuzix for TRS-80 Model 4/4p
 -------------------------------------
 
 This is an example of a successful build of Fuzix. The scripts can be accomodated for
-other platforms. The build is successful as of May 11, 2025.
+other platforms. The build is successful as of May 11, 2025. (used Docker image 
+ubuntu:24.04 'noble')
 
 - Run the script `/mount/clone_and_build_fuzix_trs80`. This will execute the following scripts:
   - `clone_sdcc280`: get the 'sdcc' compiler specially adapted to build Fuzix;
@@ -98,6 +99,18 @@ When the system is started:
 - there are some games in `/usr/games` such as `adv01`, `startrek`;
 - end your session with `shutdown`;
 - when `Halted.` is displayed, the machine can be powered off.
+
+
+Dependencies
+------------
+
+- [EtchedPixels/FUZIX](https://github.com/EtchedPixels/FUZIX.git)
+- [EtchedPixels/sdcc280](https://github.com/EtchedPixels/sdcc280.git)
+- [EtchedPixels/Fuzix-Bintools](https://github.com/EtchedPixels/Fuzix-Bintools.git)
+- [EtchedPixels/Fuzix-Compiler-Kit](https://github.com/EtchedPixels/Fuzix-Compiler-Kit.git)
+
+Unfortunately all these repositories have been archived by their owner _Alan Cox_. I don't
+know if anyone else has forked these projects and is actively maintaining them...
 
 
 Credits
