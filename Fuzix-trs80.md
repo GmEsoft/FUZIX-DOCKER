@@ -24,7 +24,10 @@ Fuzix for TRS-80 Model 4(p)
 ---------------------------
 
 - `/mount/clone_fuzix`
-- `/mount/build_fuzix-trs80` - Images exported to `mount/FUZIX/Images`
+- `/mount/build_fuzix-trs80` - Builds and exports images to `mount/FUZIX/Images`. The
+  generated `hard4p-0` image is automatically patched for the FreHD boot ROM (offset
+  `0x08` is set to `0x01`, and offset `0x0B` to `0x02`). The original is saved as
+  `hard4p-0.bak` alongside the patched image.
 - `/mount/export-fuzix` - export (mirror) the FUZIX tree to mount/FUZIX
 - `/mount/import-fuzix` - re-import the FUZIX tree from mount/FUZIX
 
@@ -33,4 +36,3 @@ All-In-One
 
 - `/mount/clone_and_build_fuzix-trs80` - Full build of Fuzix for TRS-80 in one go from the GitHub EtchedPixels repositories
 - `/mount/import_and_build_fuzix-trs80` - re-import the sources and rebuild Fuzix for TRS-80
-

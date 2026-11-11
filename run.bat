@@ -13,4 +13,4 @@ if not "%ID%" == "" (
   -v "%DIR%/mount:/mount" ^
   %IMAGE%:latest bash
 )
-pause
+if errorlevel 1 pause

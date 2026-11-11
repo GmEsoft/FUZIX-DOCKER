@@ -1,0 +1,6 @@
+#!/bin/bash
+img="$HOME/FUZIX/Images/trs80/hard4p-0"
+cp -p "$img" "$img.bak"
+printf '\x01' | dd of="$img" bs=1 seek=$((0x08)) conv=notrunc status=none
+printf '\x02' | dd of="$img" bs=1 seek=$((0x0B)) conv=notrunc status=none
+od -An -tx1 -j $((0x08)) -N 4 "$img"

@@ -84,8 +84,11 @@ TRS-80.
 the build much faster.
 
 This version of Fuzix is now able to boot natively from Hard Disk on the TRS-80 Model 4p.
-However, it is not recognized by the FreHD boot rom as such. For FreHD, the VHD header 
-needs some modification:
+The build script automatically patches the generated `hard4p-0` VHD image so it is
+recognized by the FreHD boot ROM. It changes the byte at offset `0x08` to `0x01` and
+the byte at offset `0x0B` to `0x02`. Before patching, the script saves the original
+image as `hard4p-0.bak` alongside it. Both files are included in the exported
+`mount/FUZIX/Images/trs80` directory.
 
 ```
 00000000 | 00 01  02 03  04 05  06 07  08 09  0A 0B  0C 0D  0E 0F
@@ -159,4 +162,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with FUZIX-DOCKER.  If not, see <https://www.gnu.org/licenses/>.
-
